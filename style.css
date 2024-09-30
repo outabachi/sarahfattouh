@@ -1,0 +1,282 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+:root {
+    --clr: #AD8CFF;
+    --ff: 'Oswald';
+    --ff1: 'big-caslon-fb';
+
+}
+
+body {
+    background-color: #000;
+}
+header {
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: solid 0.8px #FFF;
+    padding-bottom: 25px;
+}
+
+#h1 p {
+    
+    font-family: var(--ff1);
+    font-size: 2vw;
+    white-space: nowrap;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    text-decoration-thickness: 1px;
+}
+#h2 {
+    margin-top: 0.5vw;
+    line-height: 1.5vw;
+    display: flex;
+}
+
+#h2 ul li {
+    font-family: var(--ff);
+    font-size: 1.3vw;
+    transition: transform 0.4s ease-in-out;
+    cursor: pointer;
+    white-space: nowrap;
+    
+}
+
+#h2 ul li:hover {
+    transform: translateX(20px);
+}
+#h2 ul li a{
+    color: #FFF;
+}
+
+#h2 ul li a:hover{
+    color: var(--clr);
+}
+
+#h3 p {
+    color: var(--clr);
+    font-family: var(--ff);
+    font-size: 6vw;
+    font-weight: bolder;
+    white-space: nowrap;
+    margin-top: -1.6vw;
+}
+
+#h4 p {
+    font-family: var(--ff1);
+    color: #FFF;
+    font-size: 3.6vw;
+    position: absolute;
+    white-space: nowrap;
+    bottom: 0;
+    right: -1.3vw;
+    margin-bottom: -0.3vw;
+}
+
+
+#h5 p { 
+    font-family: var(--ff1);
+    font-size: 2vw;
+    white-space: nowrap;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    text-decoration-thickness: 1px;
+}
+#h4-h5{
+    position: relative;
+}
+
+#h6 p {
+    font-family: var(--ff);
+    font-size: 1.3vw;
+    white-space: nowrap;
+    line-height: 1.5vw;
+    color: #FFF;
+}
+#h6 {
+    margin-top: 0.5vw;
+    display: flex;
+}
+.trait {
+    border: solid 0.4px #FFF;
+    height: 5.5vw;
+    margin-right: 1.5vw;
+    margin-top: 0.4vw;
+}
+
+
+/* CSS pour la section projets */
+#projets {
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+h4 {
+    font-family: var(--ff1);
+    font-size: 1.4vw;
+    font-weight: lighter;
+    color: #FFF;
+}
+
+#divprojets {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 25px;
+}
+
+.pr {
+    width: 44vw;
+}
+
+.img {
+    position: relative;
+    width: 100%;
+    padding-top: 75%;
+}
+
+.img img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    object-fit: cover;
+    transition: opacity 0s;
+}
+.img:hover svg {
+    display: inline;
+}
+.pr .img img.active {
+    opacity: 1;
+
+}
+
+.btn {
+    position: absolute;
+    z-index: 3;
+    cursor: pointer;
+    transform: translateY(-50%);
+    top: 50%;
+    width: 5vw;
+    height: 5vw;
+    display: none;
+}
+.btn image{
+    width: 5vw;
+}
+
+span {
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    right: 0;
+    color: white;
+    font-family: var(--ff1);
+}
+
+#prev {
+    left: 0;
+    cursor: pointer;
+}
+
+#next {
+    right: 0;
+    cursor: pointer;
+}
+
+#open {
+    cursor: pointer;
+}
+
+#close {
+    display: none;
+    cursor: pointer;
+    padding-top:15px ;
+    padding-right:15px ;
+    color: var(--clr);
+}
+#close:hover {
+    text-decoration: underline;
+}
+
+body.no-scroll {
+    overflow: hidden;
+}
+
+.img.fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    background: black;
+    z-index: 1000;
+}
+
+.img.fullscreen img {
+    max-height: 100vh;
+    width: auto;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.titre-projet {
+    text-align: center;
+    margin-top: 10px;
+    color: #FFF;
+}
+.titre-projet:hover {
+    color: #AD8CFF;
+}
+
+.titre-projet p {
+    font-family: var(--ff1);
+    white-space: nowrap;
+    font-size: 1.7vw;
+    margin-top: 2vh;
+}
+
+.titre-projet h5 {
+    font-family: var(--ff);
+    white-space: nowrap;
+    font-size: 1.3vw;
+    margin-bottom: 2vh;
+    font-weight: 500;
+}
+
+#go-up{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    cursor: pointer;
+    color: #FFF;
+}
+#go-up:hover {
+    text-decoration: underline;
+    color: var(--clr);
+}
+
+footer p{
+    font-family: var(--ff);
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 10px;
+    font-size: 1.4vw;
+    font-weight: 200;
+    font-style: normal;
+    color: #FFF;
+}
