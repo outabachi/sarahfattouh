@@ -26,15 +26,7 @@ header {
     padding-bottom: 25px;
 }
 
-#h1 p {
-    
-    font-family: var(--ff1);
-    font-size: 2vw;
-    white-space: nowrap;
-    text-decoration: underline;
-    text-underline-offset: 2px;
-    text-decoration-thickness: 1px;
-}
+
 #h2 {
     margin-top: 0.5vw;
     line-height: 1.5vw;
@@ -258,6 +250,12 @@ body.no-scroll {
     margin-bottom: 2vh;
     font-weight: 500;
 }
+#h6f{
+    display: none;
+}
+#h2f{
+    display: none;
+}
 
 #go-up{
     margin-top: 50px;
@@ -279,4 +277,80 @@ footer p{
     font-weight: 200;
     font-style: normal;
     color: #FFF;
+}
+
+@media (max-width: 639px) {
+    header {
+        flex-direction: column;
+    }
+    
+    #h3 p {
+        font-size: 10vw;
+        text-align: center;
+        line-height: 120%;  
+    }
+    
+    #h4 p {
+        position: relative;
+        font-size: 8vw;
+        text-align: center;
+        line-height: 120%; 
+    }
+    .pr {
+        width: 75vw;
+    }
+    .titre-projet p {
+        font-size: 4.7vw;
+    }
+    
+    .titre-projet h5 {
+        font-size: 4.3vw;     
+    }
+    #h2{
+        display: none;
+    }
+    #h6{
+        display: none;
+    }
+    h4 {
+        font-size: 4.4vw;
+       
+    }
+    #h2f{
+        display: flex;
+    }
+    #h2f ul li {
+        font-family: var(--ff);
+        font-size: 4.3vw;
+        transition: transform 0.4s ease-in-out;
+        cursor: pointer;
+        white-space: nowrap;
+        
+    }
+    
+    #h2f ul li:hover {
+        transform: translateX(20px);
+    }
+    #h2f ul li a{
+        color: #FFF;
+    }
+    
+    #h2f ul li a:hover{
+        color: var(--clr);
+    }
+    #h6f p {
+        font-family: var(--ff);
+        font-size: 4.3vw;
+        white-space: nowrap;
+        color: #FFF;
+        text-align: left;
+    }
+    #h6f {
+        margin-top: 0.5vw;
+        display: flex;
+        margin-bottom: 5vw;
+    }
+    footer p{
+        font-size: 4vw;
+    }
 }
