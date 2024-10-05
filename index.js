@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const projects = document.querySelectorAll('.pr');
     const goUpButton = document.getElementById('go-up');
 
+    // Bouton pour remonter en haut de la page
     goUpButton.addEventListener('click', function () {
         window.scrollTo({
             top: 0,
@@ -9,15 +10,16 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-
     projects.forEach(project => {
-        let currentIndex = 0;
-        const images = project.querySelectorAll('.img img');
+        let currentIndex = 0; // Index de l'image actuelle
+        const images = project.querySelectorAll('.img img'); // Toutes les images du projet
         const prevButton = project.querySelector('.btn#prev');
         const nextButton = project.querySelector('.btn#next');
         const openButton = project.querySelector('#open');
         const closeButton = project.querySelector('#close');
+        let screenWidth = window.innerWidth; // Garde la taille de l'écran
 
+        // Fonction pour afficher l'image correspondant à l'index actuel
         function showImage(index) {
             images.forEach((img, i) => {
                 if (i === index) {
@@ -26,34 +28,65 @@ document.addEventListener('DOMContentLoaded', function () {
                     img.classList.remove('active');
                 }
             });
+
+            // Met à jour les événements "click" en fonction de la taille de l'écran
+            updateImageClickEvents();
         }
 
+        // Gestion du clic sur l'image active pour passer à l'image suivante
+        function handleImageClick() {
+            currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
+            showImage(currentIndex);
+        }
+
+        // Mise à jour des événements "click" selon la taille de l'écran
+        function updateImageClickEvents() {
+            screenWidth = window.innerWidth; // Mets à jour la taille de l'écran
+
+            // Si l'écran est inférieur à 640px, ajouter l'événement click à l'image active
+            if (screenWidth < 640) {
+                images.forEach(img => img.removeEventListener('click', handleImageClick)); // Retirer l'événement des autres images
+                const activeImage = project.querySelector('.img img.active');
+                if (activeImage) {
+                    activeImage.addEventListener('click', handleImageClick);
+                }
+            } else {
+                // Si l'écran est plus large que 640px, retirer tous les événements click
+                images.forEach(img => img.removeEventListener('click', handleImageClick));
+            }
+        }
+
+        // Bouton précédent
         prevButton.addEventListener('click', () => {
             currentIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1;
             showImage(currentIndex);
         });
 
+        // Bouton suivant
         nextButton.addEventListener('click', () => {
             currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
             showImage(currentIndex);
         });
 
+        // Gestion du plein écran
         openButton.addEventListener('click', (e) => {
-            const parentProject = e.target.closest('.pr').querySelector('.img'); 
+            const parentProject = e.target.closest('.pr').querySelector('.img');
             const body = document.body;
             const btn = document.querySelector('.btn');
-            
+
             if (parentProject) {
                 parentProject.classList.add('fullscreen');
                 body.classList.add('no-scroll');
                 closeButton.style.display = 'inline';
                 openButton.style.display = 'none';
-                btn.style.transforme = 'translateY(-75%)';
+                btn.style.transform = 'translateY(-75%)';
             }
         });
+
+        // Fermeture du mode plein écran
         closeButton.addEventListener('click', (e) => {
             const parentProject = e.target.closest('.img');
-            const body = document.body; 
+            const body = document.body;
             if (parentProject) {
                 parentProject.classList.remove('fullscreen');
                 body.classList.remove('no-scroll');
@@ -62,61 +95,54 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
 
+        // Affiche l'image initiale
         showImage(currentIndex);
+
+        // Ajoute une fonction de gestion du redimensionnement pour retirer l'événement "click" en grand écran
+        window.addEventListener('resize', updateImageClickEvents);
     });
 });
 
-    function ajouterBr() {
-        const pointInsertion = document.getElementById('insertion-point');
-        const screenWidth = window.innerWidth;
+function ajouterBr() {
+    const pointInsertion = document.getElementById('insertion-point');
+    const screenWidth = window.innerWidth;
 
-        // Vérifie si l'écran fait moins de 640 pixels
-        if (screenWidth < 640) {
-            // Vérifie si un <br> n'a pas déjà été ajouté
-            if (!document.getElementById('saut-de-ligne')) {
-                // Crée une balise <br>
-                const br = document.createElement('br');
-                br.id = 'saut-de-ligne'; // Ajoute un ID pour identifier le <br> ajouté
-                pointInsertion.parentNode.insertBefore(br, pointInsertion);
-            }
-        } else {
-            // Si l'écran est plus large que 640px, supprime le <br> si existant
-            const br = document.getElementById('saut-de-ligne');
-            if (br) {
-                br.remove();
-            }
+    if (screenWidth < 640) {
+        if (!document.getElementById('saut-de-ligne')) {
+            const br = document.createElement('br');
+            br.id = 'saut-de-ligne';
+            pointInsertion.parentNode.insertBefore(br, pointInsertion);
+        }
+    } else {
+        const br = document.getElementById('saut-de-ligne');
+        if (br) {
+            br.remove();
         }
     }
+}
 
-    function ajouterBr2() {
-        const pointInsertion2 = document.getElementById('insertion-point2');
-        const screenWidth2 = window.innerWidth;
+function ajouterBr2() {
+    const pointInsertion2 = document.getElementById('insertion-point2');
+    const screenWidth2 = window.innerWidth;
 
-        // Vérifie si l'écran fait moins de 640 pixels
-        if (screenWidth2 < 640) {
-            // Vérifie si un <br> n'a pas déjà été ajouté
-            if (!document.getElementById('saut-de-ligne2')) {
-                // Crée une balise <br>
-                const br2 = document.createElement('br');
-                br2.id = 'saut-de-ligne2'; // Ajoute un ID pour identifier le <br> ajouté
-                pointInsertion2.parentNode.insertBefore(br2, pointInsertion2);
-            }
-        } else {
-            // Si l'écran est plus large que 640px, supprime le <br> si existant
-            const br2 = document.getElementById('saut-de-ligne2');
-            if (br2) {
-                br2.remove();
-            }
+    if (screenWidth2 < 640) {
+        if (!document.getElementById('saut-de-ligne2')) {
+            const br2 = document.createElement('br');
+            br2.id = 'saut-de-ligne2';
+            pointInsertion2.parentNode.insertBefore(br2, pointInsertion2);
+        }
+    } else {
+        const br2 = document.getElementById('saut-de-ligne2');
+        if (br2) {
+            br2.remove();
         }
     }
+}
 
-    function gérerResizeEtLoad() {
-        ajouterBr();
-        ajouterBr2();
-    }
-    
-    // Exécute la fonction à chaque redimensionnement de l'écran
-    window.addEventListener('resize', gérerResizeEtLoad);
-    
-    // Exécute la fonction au chargement initial de la page
-    window.addEventListener('load', gérerResizeEtLoad);
+function gérerResizeEtLoad() {
+    ajouterBr();
+    ajouterBr2();
+}
+
+window.addEventListener('resize', gérerResizeEtLoad);
+window.addEventListener('load', gérerResizeEtLoad);
