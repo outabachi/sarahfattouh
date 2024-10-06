@@ -202,6 +202,7 @@ span {
     padding-top:15px ;
     padding-right:15px ;
     color: var(--clr);
+    font-size: 1.9vw;
 }
 #close:hover {
     text-decoration: underline;
@@ -303,11 +304,11 @@ footer p{
         width: 75vw;
     }
     .titre-projet p {
-        font-size: 4.7vw;
+        font-size: 3.7vw;
     }
     
     .titre-projet h5 {
-        font-size: 4.3vw;     
+        font-size: 3.3vw;     
     }
     #h2{
         display: none;
