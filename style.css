@@ -110,6 +110,7 @@ header {
     border: solid 0.2px #FFF;
     width: 80vw;
     margin: 0 auto;
+    display: none;
 }
 
 
@@ -333,7 +334,7 @@ footer p{
         line-height: 120%; 
     }
     .pr {
-        width: 95vw;
+        width: 100vw;
     }
     .titre-projet p {
         font-size: 4.7vw;
@@ -405,6 +406,9 @@ footer p{
     }
     #close{
         font-size: 6vw;
+    }
+    .trait1 {
+        display: block;
     }
 }
 #responsive-btn.hidden {
