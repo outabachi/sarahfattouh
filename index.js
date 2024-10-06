@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     const projects = document.querySelectorAll('.pr');
     const goUpButton = document.getElementById('go-up');
+    const responsiveBtn = document.getElementById('responsive-btn');
 
     // Bouton pour remonter en haut de la page
     goUpButton.addEventListener('click', function () {
@@ -9,6 +10,13 @@ document.addEventListener('DOMContentLoaded', function () {
             behavior: 'smooth'
         });
     });
+    responsiveBtn.addEventListener('click', function () {
+        window.scrollTo({
+            top: document.body.scrollHeight,
+            behavior: 'smooth'
+        });
+    });
+
 
     projects.forEach(project => {
         let currentIndex = 0; // Index de l'image actuelle
@@ -101,6 +109,23 @@ document.addEventListener('DOMContentLoaded', function () {
         // Ajoute une fonction de gestion du redimensionnement pour retirer l'événement "click" en grand écran
         window.addEventListener('resize', updateImageClickEvents);
     });
+    const myDiv = document.getElementById("responsive-btn");
+            const hidePosition = 5322; // La position Y où vous voulez masquer la div
+
+            window.onscroll = function() {
+                const scrollPosition = window.scrollY; // Position de défilement actuelle
+
+                console.log('Scroll Y:', scrollPosition);
+
+                // Vérifie si l'utilisateur a défilé jusqu'à 5322 pixels ou plus
+                if (scrollPosition >= hidePosition) {
+                    myDiv.classList.add("hidden"); // Masque la div
+                    console.log('Div masquée');
+                } else {
+                    myDiv.classList.remove("hidden"); // Affiche la div si on n'est pas encore à 5322
+                    console.log('Div visible');
+                }
+            };
 });
 
 function ajouterBr() {
