@@ -282,6 +282,16 @@ footer p{
     font-style: normal;
     color: #FFF;
 }
+#responsive-btn{
+    background-color: #fff;
+    color:#AD8CFF;
+    width: 30vw;
+    text-align: center;
+    font-family: var(--ff1);
+    font-size: 4.4vw;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
 
 @media (max-width: 639px) {
     header {
@@ -301,14 +311,14 @@ footer p{
         line-height: 120%; 
     }
     .pr {
-        width: 75vw;
+        width: 85vw;
     }
     .titre-projet p {
-        font-size: 3.7vw;
+        font-size: 4.7vw;
     }
     
     .titre-projet h5 {
-        font-size: 3.3vw;     
+        font-size: 4.3vw;     
     }
     #h2{
         display: none;
@@ -335,6 +345,7 @@ footer p{
         transition: transform 0.4s ease-in-out;
         cursor: pointer;
         white-space: nowrap;
+        text-align: left;
         
     }
     
