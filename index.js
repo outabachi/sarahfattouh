@@ -110,22 +110,23 @@ document.addEventListener('DOMContentLoaded', function () {
         window.addEventListener('resize', updateImageClickEvents);
     });
     const myDiv = document.getElementById("responsive-btn");
-            const hidePosition = 5322; // La position Y où vous voulez masquer la div
+    const targetDiv = document.querySelector(".trait1");
+    window.onscroll = function() {
+        // Obtenir la position actuelle de la targetDiv (div avec la classe 'trait1') par rapport au viewport
+        const targetPosition = targetDiv.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
 
-            window.onscroll = function() {
-                const scrollPosition = window.scrollY; // Position de défilement actuelle
+        console.log('Position de la div cible (trait1):', targetPosition);
 
-                console.log('Scroll Y:', scrollPosition);
-
-                // Vérifie si l'utilisateur a défilé jusqu'à 5322 pixels ou plus
-                if (scrollPosition >= hidePosition) {
-                    myDiv.classList.add("hidden"); // Masque la div
-                    console.log('Div masquée');
-                } else {
-                    myDiv.classList.remove("hidden"); // Affiche la div si on n'est pas encore à 5322
-                    console.log('Div visible');
-                }
-            };
+        // Si le haut de la div cible est au-dessus du bas de la fenêtre
+        if (targetPosition <= windowHeight) {
+            myDiv.classList.add("hidden"); // Masque la div
+            console.log('Div masquée');
+        } else {
+            myDiv.classList.remove("hidden"); // Affiche la div
+            console.log('Div visible');
+        }
+    };
 });
 
 function ajouterBr() {
