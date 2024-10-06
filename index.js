@@ -138,10 +138,46 @@ function ajouterBr2() {
         }
     }
 }
+function ajouterBr3() {
+    const pointInsertion3 = document.getElementById('insertion-point3');
+    const screenWidth3 = window.innerWidth;
+
+    if (screenWidth3 < 640) {
+        if (!document.getElementById('saut-de-ligne3')) {
+            const br3 = document.createElement('br');
+            br3.id = 'saut-de-ligne3';
+            pointInsertion3.parentNode.insertBefore(br3, pointInsertion3);
+        }
+    } else {
+        const br3 = document.getElementById('saut-de-ligne2');
+        if (br3) {
+            br3.remove();
+        }
+    }
+}
+function ajouterBr4() {
+    const pointInsertion4 = document.getElementById('insertion-point4');
+    const screenWidth4 = window.innerWidth;
+
+    if (screenWidth4 < 640) {
+        if (!document.getElementById('saut-de-ligne4')) {
+            const br4 = document.createElement('br');
+            br4.id = 'saut-de-ligne4';
+            pointInsertion4.parentNode.insertBefore(br4, pointInsertion4);
+        }
+    } else {
+        const br4 = document.getElementById('saut-de-ligne4');
+        if (br4) {
+            br4.remove();
+        }
+    }
+}
 
 function gérerResizeEtLoad() {
     ajouterBr();
     ajouterBr2();
+    ajouterBr3();
+    ajouterBr4();
 }
 
 window.addEventListener('resize', gérerResizeEtLoad);
