@@ -116,15 +116,11 @@ document.addEventListener('DOMContentLoaded', function () {
         const targetPosition = targetDiv.getBoundingClientRect().top;
         const windowHeight = window.innerHeight;
 
-        console.log('Position de la div cible (trait1):', targetPosition);
-
         // Si le haut de la div cible est au-dessus du bas de la fenêtre
         if (targetPosition <= windowHeight) {
             myDiv.classList.add("hidden"); // Masque la div
-            console.log('Div masquée');
         } else {
             myDiv.classList.remove("hidden"); // Affiche la div
-            console.log('Div visible');
         }
     };
 });

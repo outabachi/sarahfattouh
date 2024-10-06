@@ -162,7 +162,6 @@ h4 {
     -webkit-user-select: none; /* Pour les navigateurs WebKit comme Chrome et Safari */
     -moz-user-select: none; /* Pour Firefox */
     -ms-user-select: none; /* Pour Internet Explorer et Edge */
-    pointer-events: none;
 }
 .img:hover svg {
     display: inline;
